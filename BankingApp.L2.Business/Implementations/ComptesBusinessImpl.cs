@@ -4,6 +4,7 @@ using BankingApp.L2.Business.Facade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +12,14 @@ namespace BankingApp.L2.Business.Implementations
 {
     public class ComptesBusinessImpl : ICompteBusiness
     {
-        public const decimal TAUX = 0.1M; 
+        public const decimal TAUX = 0.1M;
 
-        private IComptesRepository repo = new ComptesRepositoryImpl_EF();
+
+        //private IComptesRepository repo; = new ComptesRepositoryImpl_EF();
+
+        private IComptesRepository repo;
+
+        public ComptesBusinessImpl(IComptesRepository repo) { this.repo = repo; }
 
         public decimal ConsulterCompte(string id)
         {
